@@ -97,41 +97,96 @@ class list{
         
     }
     void DeleteAtEnd()
-    //delete the node which is at the last of the list by connecting the last prevois node pointer to null
+    //delete the node which is at the last of the list by connecting the last previous node pointer to null
     {
         node temp=head;
-        while(temp.next.next!=null){
-            temp=temp.next;
+        if(head==null){
+            System.out.println("linked list is empty ");
+
         }
-        temp.next=null;
-        System.out.println("Node is Deleted");
+        else if(head.next==null){
+            head=null;
+            System.out.println("Node is Deleted");
+        }
+        else{
+            while(temp.next.next!=null){
+                temp=temp.next;
+            }
+            temp.next=null;
+            System.out.println("Node is Deleted");
+        }
+        
     }
     void DeleteAtHead()
     //delete the first node of the list by declaring the next node of the head as head
     {
-        var temp=head;
-        head=temp.next;
-        System.out.println("Node is Deleted");
+        if(head==null){
+            System.out.println("linked list is empty ");
+
+        }
+        else{
+            var temp=head;
+            head=temp.next;
+            System.out.println("Node is Deleted");
+        }
+       
 
     }
     void Delete()
     //delete the specified node by connecting the previous node of current node to next node of current node
     {
-        System.out.println("Enter the data to be deleted:");
-        int data=inp.nextInt();
-        node temp=head;
-        while(temp.next.data!=data){
-            temp=temp.next;
+        if(head==null){
+            System.out.println("Empty list");
         }
-        var dum=temp.next;
-        temp.next=dum.next;
-        System.out.println("Node is Deleted");
+       
+        else{
+            System.out.println("Enter the data to be deleted:");
+            int data=inp.nextInt();
+            node temp=head; 
+            if(head.next==null){
+                if(head.data==data){
+                    head=null;
+                }
+                else{
+                    System.out.println("Element not present");
+
+                }
+            } 
+            else{
+                int flag=0;
+                while(temp.next!=null){
+                    if(temp.next.data==data){
+                        var dum=temp.next;
+                        temp.next=dum.next;
+                        System.out.println("Node is Deleted"); 
+                        flag=1;
+                        break;
+                    }
+                    else{
+                        flag=0;
+                        temp=temp.next;
+                    }
+                }  
+                if(flag==0){
+                    System.out.println("element not present in list");
+                }  
+            }  
+           
+            
+           
+        }
+       
 
     }
     void Find()
     //find the node if exist in the list
     {
-        System.out.println("Enter the data to be find:");
+        if(head==null){
+            System.out.println("The list is empty");
+
+        }
+        else{
+            System.out.println("Enter the data to be find:");
         int data=inp.nextInt();
         node temp=head;
         int status=0;
@@ -148,6 +203,8 @@ class list{
        else if(status==0){
            System.out.println("Element not found in linked list");
        }
+        
+        }
         
     }
     void display()
